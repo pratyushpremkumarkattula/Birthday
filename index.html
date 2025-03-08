@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 3em;
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px white;
+            }
+            to {
+                text-shadow: 0 0 20px cyan, 0 0 30px blue;
+            }
+        }
+        .countdown {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+        .gift-box {
+            background: #ff69b4;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .hidden-message {
+            display: none;
+            margin-top: 20px;
+        }
+        .gallery, .love-letter, .reasons, .quiz, .shooting-star, .card, .secret-letter {
+            margin-top: 40px;
+        }
+        .photo {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        .heart {
+            cursor: pointer;
+            font-size: 2em;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, My Love!</h1>
+        <div class="countdown" id="countdown"></div>
+        <div class="gift-box" onclick="revealMessage()">🎁 Click to Unwrap</div>
+        <div class="hidden-message" id="message">I love you more than words can say!❤️</div>
+    </div>
+    <div class="gallery">
+        <h2>Photo Gallery</h2>
+        <img src="photo1.jpg" class="photo" alt="Beautiful Memory">
+        <img src="photo2.jpg" class="photo" alt="Beautiful Memory">
+    </div>
+    <div class="love-letter">
+        <h2>Love Letter</h2>
+        <p>My dearest love, you are my everything...</p>
+    </div>
+    <div class="reasons">
+        <h2>Reasons Why I Love You</h2>
+        <span class="heart" onclick="alert('Your smile brightens my day!')">❤️</span>
+        <span class="heart" onclick="alert('You are the most caring person!')">❤️</span>
+    </div>
+    <div class="quiz">
+        <h2>Love Quiz</h2>
+        <button onclick="alert('Correct!')">First Date?</button>
+    </div>
+    <div class="shooting-star">
+        <h2>Make a Wish!</h2>
+        <button onclick="shootingStar()">Wish</button>
+    </div>
+    <div class="card">
+        <h2>3D Birthday Card</h2>
+        <button onclick="openCard()">Open Card</button>
+    </div>
+    <div class="secret-letter">
+        <h2>Secret Letter</h2>
+        <input type="password" id="pass" placeholder="Enter Password">
+        <button onclick="unlockLetter()">Unlock</button>
+        <p id="secret" style="display: none;">Surprise! I have something special planned! ❤️</p>
+    </div>
+    <script>
+        function countdown() {
+            const birthday = new Date('2025-04-10T00:00:00').getTime();
+            setInterval(() => {
+                const now = new Date().getTime();
+                const distance = birthday - now;
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }, 1000);
+        }
+        countdown();
+        function revealMessage() {
+            document.getElementById('message').style.display = 'block';
+        }
+        function shootingStar() {
+            alert('A shooting star appears! Your wish is granted!');
+        }
+        function openCard() {
+            alert('🎉 Happy Birthday! 🎉');
+        }
+        function unlockLetter() {
+            if (document.getElementById('pass').value === 'love') {
+                document.getElementById('secret').style.display = 'block';
+            } else {
+                alert('Wrong password!');
+            }
+        }
+    </script>
+</body>
+</html>
